@@ -67,6 +67,7 @@ module Dox
       end
 
       def parse_request_body
+        request.raw_post # workaround for an empty body param on rails 5.1
         body = request.body.read
         return body if body.blank?
         JSON.parse(body)
